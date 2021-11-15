@@ -1,0 +1,16 @@
+input,
+button {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#urlBase {
+  width: 300px;
+}
+#firstQRText {
+  font-size: 14pt;
+  margin-bottom: 30px;
+}
+.qrCode {
+  display: inline-block;
+  margin: 30px;
+}
