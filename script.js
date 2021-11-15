@@ -33,13 +33,24 @@ function updateQRCodes() {
 }
 
 function generateQRForPDF(doc, x, y, qrId) {
+  // cuadrado
   doc.setDrawColor(245, 91, 2);
   doc.rect(x, y, 40, 40);
+
+  doc.setFontSize(10);
   doc.text('¿Tienes problemas?', x + 4, y + 32);
   doc.text('¡Escanéame!', x + 10, y + 36);
 
+  // correlativo
+  doc.setFontSize(5);
+  const corr = qrId.replace('qrCode', '');
+  doc.text(corr, x + 1, y + 39);
+
+  // qr
   const base64Image = $(`#${qrId} img`).attr('src');
   doc.addImage(base64Image, 'png', x + 7.5, y + 3, 25, 25);
+
+  // logo acanto
   const imageFactor = 60;
   doc.addImage('logo.png', 'png', x + 31.5, y + 35, 516 / imageFactor, 212 / imageFactor);
 }
@@ -51,7 +62,6 @@ function generatePDF() {
   });
 
   doc.setFont('SourceSansPro', 'bold');
-  doc.setFontSize(10);
 
   let x = 3;
   let y = -42;
